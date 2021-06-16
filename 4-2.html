@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>Seinkönnen_Fourth floor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" type="text/css" src="jquery-1.12.0.min.js"></script>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+   </head>
+
+
+    <style>
+
+body { font-family: 'NanumGothic', sans-serif;
+       background-color: black; }
+
+
+
+.typing-txt{display: none;}
+ul{list-style:none;}
+
+.typing ul li{
+  display:block;
+}
+
+.typing ul li.on {
+  display: inline-block;
+  animation-name: cursor;
+  animation-duration: 0.3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes cursor{
+  0%{border-right: 1px solid #fff}
+  50%{border-right: 1px solid #000}
+  100%{border-right: 1px solid #fff}
+}
+
+
+
+.nav {
+       position: absolute;
+       margin-left: 74%;
+       top: 77%;
+
+       }
+
+.nav2 {
+  position: absolute;
+  margin-left: 24%;
+  top: 77%;
+
+}
+
+    </style>
+
+    <body>
+
+<audio src="audio/print.mp3" autoplay loop> 브라우저가 오디오를 지원하지 않네요. 프린터가 장동하는 소리가 들립니다. </audio>
+<table style="margin-left: auto; margin-right: auto;">
+
+<td>
+<tr>
+  <br><br>
+ <img src="img/4f.png" width="50%" height="50%" style="margin-left: auto; margin-right: auto; display: block;">
+ <a href="4-3.html" class="nav"> <img src="img/next.png" width="15px"
+   onmouseover="this.src='img/next_g.png'" onmouseout="this.src='img/next.png'"></a>
+
+ <a href="4-1.html" class="nav2"> <img src="img/before.png" width="15px"
+    onmouseover="this.src='img/before_g.png'" onmouseout="this.src='img/before.png'"></a>
+</tr>
+
+</td>
+</table>
+
+ <div class="typing-txt" >
+   <ul>
+     <li>오늘은 즐겁고 행복한 월급날! 이어야 하는데. </li>
+     <li>월세에 공과금, 카드값. 그리고 학자금 대출! 살려주라, 좀. </li>
+     <li>월 200 남짓한 것 벌구, 남 심부름이나 좀 하러 대학 나왔나? </li>
+     <li>몰라. 프린트나 하자.</li>
+ </ul>
+
+
+ </div>
+ <div class="typing" align="center" style="color:white; font-family:'NanumGothic', sans-serif;">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+
+   </ul>
+ </div>
+
+
+
+    </body>
+
+        <script>
+
+        var typingBool = false;
+        var typingIdx=0;
+        var liIndex = 0;
+        var liLength = $(".typing-txt>ul>li").length;
+
+
+        var typingTxt = $(".typing-txt>ul>li").eq(liIndex).text();
+        typingTxt=typingTxt.split("");
+        if(typingBool==false){
+            typingBool=true;
+            var tyInt = setInterval(typing,100);
+        }
+
+        function typing(){
+          $(".typing ul li").removeClass("on");
+           $(".typing ul li").eq(liIndex).addClass("on");
+          if(typingIdx<typingTxt.length){
+             $(".typing ul li").eq(liIndex).append(typingTxt[typingIdx]);
+             typingIdx++;
+           } else{ if(liIndex<liLength-1){
+
+               liIndex++;
+
+                typingIdx=0;
+                typingBool = false;
+                typingTxt = $(".typing-txt>ul>li").eq(liIndex).text();
+
+                 clearInterval(tyInt);
+
+
+                 setTimeout(function(){
+
+                   tyInt = setInterval(typing,100);
+                 },500);
+                } else if(liIndex==liLength-1){
+
+
+                   clearInterval(tyInt);
+                }
+            }
+        }
+
+        </script>
+
+
+</html>
